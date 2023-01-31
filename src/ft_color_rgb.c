@@ -6,16 +6,20 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 05:55:56 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:09:41 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_color.h"
+#include "mlxft/color.h"
 #include <math.h>
 
 t_color	ft_color_from_char_rgb(char red, char green, char blue)
 {
-	return ((t_color){.r = red, .g = green, .b = blue});
+	return ((t_color){
+		.r = red,
+		.g = green,
+		.b = blue,
+	});
 }
 
 t_color	ft_color_from_float_rgb(float red, float green, float blue)
@@ -23,7 +27,7 @@ t_color	ft_color_from_float_rgb(float red, float green, float blue)
 	return ((t_color){
 		.r = (char)(red * 255),
 		.g = (char)(green * 255),
-		.b = (char)(blue * 255)
+		.b = (char)(blue * 255),
 	});
 }
 

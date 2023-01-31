@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 20:08:47 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/15 11:58:29 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:49:20 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
+#include "mlxft/math.h"
 #include <math.h>
 
 int	ft_imin(int a, int b)

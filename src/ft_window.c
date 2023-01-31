@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:48:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/09 07:35:57 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "mlxft/mlxft.h"
 #include <mlx.h>
 
 bool	ft_window_alloc(t_window *window, int width, int height, char *title)

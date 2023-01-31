@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/08 04:26:00 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "mlxft/mlxft.h"
 #include <mlx.h>
 
 bool	ft_image_alloc(t_img *img, int width, int height)

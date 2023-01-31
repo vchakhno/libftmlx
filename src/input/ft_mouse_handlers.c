@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 06:09:51 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/08 06:11:42 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "mlxft/mlxft.h"
 #include <mlx.h>
 #include <X11/X.h>
 

@@ -2,32 +2,23 @@
 # 	Makefile based on clemedon's Makefile tutorial							   #
 # **************************************************************************** #
 
-NAME		:= libmlxft.a
+NAME		:= a.out
 
 # **************************************************************************** #
 # 	SOURCES																	   #
 # **************************************************************************** #
 
-include src/math/Makefile
-include src/input/Makefile
-include src/drawing/Makefile
-
-SRC_DIR		:= src
-SRCS		:= \
-	$(addprefix /math/,$(MATH_SRCS)) \
-	$(addprefix /input/,$(INPUT_SRCS)) \
-	$(addprefix /drawing/,$(DRAWING_SRCS)) \
-	ft_image.c \
-	ft_color_rgb.c \
-	ft_color_hsv.c \
-	ft_mlx_context.c \
-	ft_renderer.c \
-	ft_window_handlers.c \
-	ft_window.c
+SRC_DIR		:= ../mains
+SRCS		:= main.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
-INCS		:= include \
-		lib/minilibx
+INCS		:= ../include \
+			../lib/minilibx/
+
+LIBS		:= mlxft mlx Xext X11 m
+LIBS_TARGET	:= \
+	../libmlxft.a \
+	../lib/minilibx/libmlx.a
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -40,7 +31,8 @@ DEPS		:= $(OBJS:.o=.d)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-AR			= ar -rcs
+LDFLAGS		:= $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIBS		:= $(addprefix -l,$(LIBS))
 
 # **************************************************************************** #
 # 	UTILITIES																   #
@@ -61,7 +53,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 -include $(DEPS)
 

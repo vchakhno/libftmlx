@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 06:01:26 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:49:20 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_color.h"
+#include "mlxft/color.h"
 #include <math.h>
 
 static float	ft_math_float_mod(float f, float m)
