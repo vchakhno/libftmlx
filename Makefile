@@ -87,20 +87,15 @@ re: fclean all
 # **************************************************************************** #
 
 $(LIB_DIR):
-	@echo "Echo from lib dir"
 	@mkdir lib
 
 $(LIB_DIR)/minilibx/: | $(LIB_DIR)
-	@echo "Echo from lib"
 	git clone git@github.com:42Paris/minilibx-linux.git $(LIB_DIR)/minilibx
 
 $(LIB_DIR)/libft/: | $(LIB_DIR)
-	@echo "Echo from lib"
 	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
 
 .SECONDEXPANSION:
 $(LIB_TARGETS): %.a: | $$(dir %.a)
-	@echo ${@:%.a=$(dir %.a)}
-	@echo "Echo from lib target"
 	@export LIB_DIR
 	make -C $(dir $@)
