@@ -26,8 +26,15 @@ SRCS		:= \
 	ft_window.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
-INCS		:= include \
-		lib/minilibx
+INCS		:= include
+
+LIB_DIR		?= lib
+LIB_TARGETS	:= \
+				minilibx/libmlx.a \
+				libft/libft.a
+LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
+
+INCS		+= $(dir $(LIB_TARGETS))
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -48,7 +55,7 @@ AR			= ar -rcs
 
 RM			:= rm -rf
 MAKEFLAGS   += --no-print-directory
-DIR_DUP		= mkdir -p $(@D)
+DIR_DUP		= @mkdir -p $(@D)
 
 # **************************************************************************** #
 # 	RECIPIES :D																   #
@@ -60,7 +67,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(LIB_TARGETS) $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 -include $(DEPS)
@@ -74,3 +81,26 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+# **************************************************************************** #
+# 	DEPENDENCIES :3																   #
+# **************************************************************************** #
+
+$(LIB_DIR):
+	@echo "Echo from lib dir"
+	@mkdir lib
+
+$(LIB_DIR)/minilibx/: | $(LIB_DIR)
+	@echo "Echo from lib"
+	git clone git@github.com:42Paris/minilibx-linux.git $(LIB_DIR)/minilibx
+
+$(LIB_DIR)/libft/: | $(LIB_DIR)
+	@echo "Echo from lib"
+	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
+
+.SECONDEXPANSION:
+$(LIB_TARGETS): %.a: | $$(dir %.a)
+	@echo ${@:%.a=$(dir %.a)}
+	@echo "Echo from lib target"
+	@export LIB_DIR
+	make -C $(dir $@)
