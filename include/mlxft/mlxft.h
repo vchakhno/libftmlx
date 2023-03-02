@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 17:14:24 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/02/02 06:34:09 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_renderer
 	t_img	back_buffer;
 }	t_renderer;
 
-# define EDGE 5.f
+# define EDGE 1.f
 
 // ft_renderer.c
 bool			ft_renderer_alloc(t_renderer *renderer,

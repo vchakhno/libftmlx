@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 23:00:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/02/02 07:04:23 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	ft_draw_solid_line(t_renderer *renderer,
 	while (i <= dy)
 	{
 		ft_draw_horizontal_line(renderer, (t_hor_line){
-			fmax(i - 0.5, 0) * slope + 0.5f + line.start.x,
-			fmin(i + 0.5, dy) * slope + 0.5f + line.start.x,
+			fmax(i - 0.5f, 0) * slope + 0.5f + line.start.x,
+			fmin(i + 0.5f, dy) * slope + 0.5f + line.start.x,
 			i + fmin(line.start.y, line.end.y)},
 			color);
 		i++;

@@ -8,17 +8,16 @@ NAME		:= a.out
 # 	SOURCES																	   #
 # **************************************************************************** #
 
-SRC_DIR		:= ../mains
+SRC_DIR		:= .
 SRCS		:= main.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
-INCS		:= ../include \
-			../lib/minilibx/
+INCS		:=	../../include \
+				../../lib/minilibx/
 
 LIBS		:= mlxft mlx Xext X11 m
-LIBS_TARGET	:= \
-	../libmlxft.a \
-	../lib/minilibx/libmlx.a
+LIBS_TARGET	:=	../../libmlxft.a \
+				../../lib/minilibx/libmlx.a
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -55,7 +54,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 $(NAME): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
--include $(DEPS)
+# -include $(DEPS)
 
 clean:
 	$(RM) $(OBJS) $(DEPS)
