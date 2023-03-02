@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:15:56 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ bool	ft_image_alloc(t_img *img, int width, int height)
 		return (false);
 	img->width = width;
 	img->height = height;
+	img->addr = mlx_get_data_addr(img->mlx_img,
+			&img->bpp, &img->line_len, &img->endian);
+	return (true);
+}
+
+bool	ft_image_alloc_from_xpm(t_img *img, char *filename)
+{
+	img->mlx_img = mlx_xpm_file_to_image(ft_mlx_context_get(),
+			filename, &img->width, &img->height);
+	if (!img->mlx_img)
+		return (false);
 	img->addr = mlx_get_data_addr(img->mlx_img,
 			&img->bpp, &img->line_len, &img->endian);
 	return (true);

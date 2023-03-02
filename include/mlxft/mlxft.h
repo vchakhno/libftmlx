@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/02/02 06:34:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:17:59 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_img
 
 // ft_image.c
 bool			ft_image_alloc(t_img *img, int width, int height);
+bool			ft_image_alloc_from_xpm(t_img *img, char *filename);
 t_color			*ft_image_get_pixel(t_img *img, t_point pos);
 void			ft_image_free(t_img *img);
 
@@ -68,6 +69,8 @@ void			ft_draw_opaque_point__unchecked(t_renderer *renderer,
 					t_point point, t_color color, float opacity);
 void			ft_draw_solid_line(t_renderer *renderer,
 					t_line line, t_color color);
+void			ft_copy_image(t_renderer *renderer,
+					t_point dst_pos, t_img *src, t_rect	src_rect);
 
 // ft_fill.c
 void			ft_fill_rect(t_renderer *renderer,
