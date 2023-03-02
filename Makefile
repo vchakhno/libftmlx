@@ -99,5 +99,3 @@ $(LIB_DIR)/libft/: | $(LIB_DIR)
 
 .SECONDEXPANSION:
 $(LIB_TARGETS): %.a: | $$(dir %.a)
-	@export LIB_DIR
-	make -C $(dir $@)
