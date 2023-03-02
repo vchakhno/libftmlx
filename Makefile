@@ -33,8 +33,10 @@ LIB_TARGETS	:= \
 				minilibx/libmlx.a \
 				libft/libft.a
 LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
-
-INCS		+= $(dir $(LIB_TARGETS))
+LIB_INCS	:= \
+				minilibx/ \
+				libft/include/
+INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
