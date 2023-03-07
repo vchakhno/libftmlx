@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:07:48 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 11:49:20 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:10:39 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ bool	ft_circle_contains(t_circle circle, t_point point)
 		(point.x - circle.x) * (point.x - circle.x)
 		+ (point.y - circle.y) * (point.y - circle.y)
 		< circle.r * circle.r
-	);
-}
-
-double	ft_squared_dist(t_complex a, t_complex b)
-{
-	return (
-		(a.x - b.x) * (a.x - b.x)
-		+ (a.y - b.y) * (a.y - b.y)
 	);
 }
 
