@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 16:25:51 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:35:50 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void	ft_fill_rect(t_renderer *renderer,
 	int	i;
 	int	j;
 
-	rect.x = ft_iclamp(0, rect.x, renderer->width);
-	rect.w = ft_iclamp(0, rect.w, renderer->width - rect.x);
-	rect.y = ft_iclamp(0, rect.y, renderer->height);
-	rect.h = ft_iclamp(0, rect.h, renderer->height - rect.y);
 	i = rect.y;
 	while (i < rect.y + rect.h)
 	{

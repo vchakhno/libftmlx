@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:47:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/02/27 05:44:03 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:01:29 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(void)
 
 	if (!ft_window_alloc(&window, 1200, 800, "Text example"))
 		return (1);
-	mlx_set_font(ft_mlx_context_get(), window.mlx_window, "roboto");
+	// mlx_set_font(ft_mlx_context_get(), window.mlx_window, "Jetbrains Mono");
 	ft_window_loop(&window, tick, render, &(t_app){});
 	ft_window_free(&window);
 }

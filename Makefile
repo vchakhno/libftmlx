@@ -28,7 +28,7 @@ SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
 INCS		:= include
 
-LIB_DIR		?= lib
+LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))lib
 LIB_TARGETS	:= \
 				minilibx/libmlx.a \
 				libft/libft.a
@@ -85,11 +85,11 @@ re: fclean all
 .PHONY: all clean fclean re
 
 # **************************************************************************** #
-# 	DEPENDENCIES :3																   #
+# 	DEPENDENCIES :3															   #
 # **************************************************************************** #
 
 $(LIB_DIR):
-	@mkdir lib
+	@mkdir -p $(LIB_DIR)
 
 $(LIB_DIR)/minilibx/: | $(LIB_DIR)
 	git clone git@github.com:42Paris/minilibx-linux.git $(LIB_DIR)/minilibx
@@ -97,5 +97,9 @@ $(LIB_DIR)/minilibx/: | $(LIB_DIR)
 $(LIB_DIR)/libft/: | $(LIB_DIR)
 	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
 
+$(LIB_DIR)/mlxft/: | $(LIB_DIR)
+	git clone git@github.com:vchakhno/mlxft.git $(LIB_DIR)/mlxft
+
 .SECONDEXPANSION:
-$(LIB_TARGETS): %.a: | $$(dir %.a)
+$(LIB_TARGETS): $(LIB_DIR)/%.a: | $(LIB_DIR)/$$(dir %.a)
+	make LIB_DIR=$(LIB_DIR) -C $(dir $@)

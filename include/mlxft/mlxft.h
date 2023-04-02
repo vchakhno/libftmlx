@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/03/02 11:17:59 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/04/02 06:24:27 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,12 @@ void			ft_draw_opaque_point__unchecked(t_renderer *renderer,
 					t_point point, t_color color, float opacity);
 void			ft_draw_solid_line(t_renderer *renderer,
 					t_line line, t_color color);
-void			ft_copy_image(t_renderer *renderer,
-					t_point dst_pos, t_img *src, t_rect	src_rect);
+void			ft_render_image(
+					t_renderer *renderer, t_drect dst_rect,
+					t_img *img, t_drect src_rect);
+void			ft_render_image__unchecked(
+					t_renderer *renderer, t_drect dst_rect,
+					t_img *img, t_drect src_rect);
 
 // ft_fill.c
 void			ft_fill_rect(t_renderer *renderer,
@@ -91,8 +95,16 @@ typedef struct s_window_loop_callback
 	void		*user_data;
 }	t_window_loop_callback;
 
+typedef void			t_window_cross;
+
 typedef struct s_window
 {
+	void		(*tick)();
+	void		(*render)();
+	void		*loop_data;
+	void		(*on_key_press)();
+	void		(*on_key_release)();
+	void		*key_data;
 	void		*mlx_window;
 	t_input		input;
 	t_renderer	renderer;
@@ -106,7 +118,7 @@ void			ft_window_loop(t_window *window,
 					bool (*tick)(), bool (*render)(), void *user_data);
 void			ft_window_free(t_window *window);
 
-// ft_window_handlers.c
+// ft_window_handlers.c 
 void			ft_window_attach_handlers(t_window *window);
 int				ft_window_keypress_handler(int keysym, void *context);
 int				ft_window_loop_handler(t_window_loop_callback *callback);

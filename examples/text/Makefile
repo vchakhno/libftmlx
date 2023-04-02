@@ -12,12 +12,17 @@ SRC_DIR		:= .
 SRCS		:= main.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
-INCS		:=	../../include \
-				../../lib/minilibx/
+INCS		:=
 
-LIBS		:= mlxft mlx Xext X11 m
-LIBS_TARGET	:=	../../libmlxft.a \
-				../../lib/minilibx/libmlx.a
+LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))../../lib
+LIB_TARGETS	:= \
+				minilibx/libmlx.a \
+				libft/libft.a
+LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
+LIB_INCS	:= \
+				minilibx/ \
+				libft/include/
+INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -54,7 +59,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 $(NAME): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
-# -include $(DEPS)
+-include $(DEPS)
 
 clean:
 	$(RM) $(OBJS) $(DEPS)
