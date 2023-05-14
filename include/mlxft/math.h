@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/03/06 23:10:35 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 17:07:52 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ typedef struct s_drange
 bool		ft_circle_contains(t_circle circle, t_point point);
 bool		ft_rect_contains_point(t_rect rect, t_point point);
 
-int			ft_imin(int a, int b);
-int			ft_imax(int a, int b);
-int			ft_iclamp(int start, int value, int end);
-
-double		ft_smoothstep(double value, t_drange from, t_drange to);
+double		ft_lerp(double value, t_drange from, t_drange to);
 
 #endif

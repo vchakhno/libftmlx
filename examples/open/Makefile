@@ -9,24 +9,32 @@ NAME		:= a.out
 # **************************************************************************** #
 
 SRC_DIR		:= .
-SRCS		:= main.c
+SRCS		:= \
+				main.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
-INCS		:=
-
-LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))../../lib
-LIB_TARGETS	:= \
-				minilibx/libmlx.a \
-				libft/libft.a
-LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
-LIB_INCS	:= \
-				minilibx/ \
-				libft/include/
-INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))
+INCS		:= .
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS		:= $(OBJS:.o=.d)
+
+# **************************************************************************** #
+# 	LIBRARIES																   #
+# **************************************************************************** #
+
+LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))lib
+LIBS		:= mlxft ft mlx X11 m Xext
+LIB_TARGETS	:= \
+				mlxft/libmlxft.a \
+				libft/libft.a \
+				minilibx/libmlx.a
+LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
+LIB_INCS	:= \
+				mlxft/include \
+				libft/include \
+				minilibx/
+INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))
 
 # **************************************************************************** #
 # 	COMPILATION																   #
@@ -35,7 +43,7 @@ DEPS		:= $(OBJS:.o=.d)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-LDFLAGS		:= $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDFLAGS		:= $(addprefix -L,$(dir $(LIB_TARGETS)))
 LDLIBS		:= $(addprefix -l,$(LIBS))
 
 # **************************************************************************** #
@@ -56,7 +64,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(LIB_TARGETS) $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 -include $(DEPS)
@@ -70,3 +78,17 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+# **************************************************************************** #
+# 	DEPENDENCIES :3																   #
+# **************************************************************************** #
+
+$(LIB_DIR):
+	@mkdir -p $(LIB_DIR)
+
+$(LIB_DIR)/libft/: | $(LIB_DIR)
+	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
+
+.SECONDEXPANSION:
+$(LIB_TARGETS): $(LIB_DIR)/%.a: | $(LIB_DIR)/$$(dir %.a)
+	make LIB_DIR=$(LIB_DIR) -C $(dir $@)

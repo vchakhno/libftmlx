@@ -6,19 +6,22 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 02:46:02 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 16:26:54 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:04:39 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlxft/mlxft.h"
 #include <mlx.h>
 
-bool	ft_renderer_alloc(t_renderer *renderer,
-	void *mlx_window, int width, int height)
+bool	ft_renderer_alloc(t_renderer *renderer, int width, int height)
 {
-	if (!ft_image_alloc(&renderer->back_buffer, width, height))
+	t_window	*window;
+
+	window = (void *)renderer - (
+			(void *)&((t_window *)0)->renderer - (void *)0);
+	if (!ft_image_alloc(&renderer->back_buffer,
+			window->mlx_context, width, height))
 		return (false);
-	renderer->mlx_window = mlx_window;
 	renderer->width = width;
 	renderer->height = height;
 	return (true);
@@ -26,20 +29,28 @@ bool	ft_renderer_alloc(t_renderer *renderer,
 
 void	ft_renderer_free(t_renderer *renderer)
 {
-	ft_image_free(&renderer->back_buffer);
+	t_window	*window;
+
+	window = (void *)renderer - (
+			(void *)&((t_window *)0)->renderer - (void *)0);
+	ft_image_free(&renderer->back_buffer, window->mlx_context);
 }
 
 void	ft_renderer_display(t_renderer *renderer)
 {
+	t_window	*window;
+
+	window = (void *)renderer - (
+			(void *)&((t_window *)0)->renderer - (void *)0);
 	mlx_put_image_to_window(
-		ft_mlx_context_get(), renderer->mlx_window,
+		window->mlx_context, window->mlx_window,
 		renderer->back_buffer.mlx_img, 0, 0);
 }
 
 void	ft_renderer_clear(t_renderer *renderer, t_color color)
 {
-	int	i;
-	int	j;
+	t_u32	i;
+	t_u32	j;
 
 	i = 0;
 	while (i < renderer->back_buffer.height)

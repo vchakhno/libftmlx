@@ -6,19 +6,22 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 06:09:51 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:30:23 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlxft/mlxft.h"
 #include <mlx.h>
 
-void	ft_mouse_init(t_mouse *mouse, void *mlx_window)
+void	ft_mouse_init(t_mouse *mouse)
 {
-	void *const	context = ft_mlx_context_get();
+	t_window	*window;
 	int			i;
 
-	mlx_mouse_get_pos(context, mlx_window, &mouse->pos.x, &mouse->pos.y);
+	window = (void *)mouse - (
+			(void *)&((t_window *)0)->input.mouse - (void *)0);
+	mlx_mouse_get_pos(window->mlx_context, window->mlx_window,
+		&mouse->pos.x, &mouse->pos.y);
 	mouse->previous_pos = mouse->pos;
 	i = 0;
 	while (i < 3)
@@ -29,7 +32,6 @@ void	ft_mouse_init(t_mouse *mouse, void *mlx_window)
 		i++;
 	}
 	mouse->scroll = 0;
-	ft_mouse_attach_handlers(mouse, mlx_window);
 }
 
 void	ft_mouse_update(t_mouse *mouse)

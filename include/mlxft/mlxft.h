@@ -6,13 +6,14 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/04/02 06:24:27 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:04:41 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLXFT_H
 # define MLXFT_H
 
+# include <libft/fixed_types.h>
 # include "math.h"
 # include "color.h"
 # include "input.h"
@@ -27,34 +28,37 @@ typedef struct s_window	t_window;
 
 typedef struct s_img
 {
+	t_u32	width;
+	t_u32	height;
 	void	*mlx_img;
 	char	*addr;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	t_u32	line_len;
 }	t_img;
 
 // ft_image.c
-bool			ft_image_alloc(t_img *img, int width, int height);
-bool			ft_image_alloc_from_xpm(t_img *img, char *filename);
+bool			ft_image_alloc(t_img *img,
+					void *mlx_context, int width, int height);
+bool			ft_image_alloc_from_xpm(t_img *img,
+					void *mlx_context, char *filename);
 t_color			*ft_image_get_pixel(t_img *img, t_point pos);
-void			ft_image_free(t_img *img);
+void			ft_image_free(t_img *img, void *mlx_context);
 
 typedef struct s_renderer
 {
-	void	*mlx_window;
-	int		width;
-	int		height;
-	t_img	back_buffer;
+	union {
+		t_img	back_buffer;
+		struct {
+			t_u32	width;
+			t_u32	height;
+		};
+	};
 }	t_renderer;
 
 # define EDGE 1.f
 
 // ft_renderer.c
 bool			ft_renderer_alloc(t_renderer *renderer,
-					void *mlx_window, int width, int height);
+					int width, int height);
 void			ft_renderer_free(t_renderer *renderer);
 void			ft_renderer_display(t_renderer *renderer);
 
@@ -87,50 +91,67 @@ void			ft_renderer_clear(t_renderer *renderer, t_color color);
 /* 	WINDOW																	  */
 /******************************************************************************/
 
-typedef struct s_window_loop_callback
-{
-	bool		(*tick)();
-	bool		(*render)();
-	t_window	*window;
-	void		*user_data;
-}	t_window_loop_callback;
+/*
+	Loop callback
+		(t_window *window, void *data)
+		
+	Key press callback
+		(t_window *window, int key, void *data)
+	
+	Key release callback
+		(t_window *window, int key, void *data)
 
-typedef void			t_window_cross;
+	Mouse move callback
+		(t_window *window, int mouse_x, int mouse_y, void *data)
+		Note:
+			you can get the new mouse pos from window->input
+			so I'm not certain whether to include it
+
+	Mouse button press:
+		(t_window *window, int button, void *data)
+		
+	Mouse button release:
+		(t_window *window, int button, void *data)
+
+	The prototypes are hidden in this way so that the void *data coerces without
+	warning into any type, which these a bit more comfortable to use (no cast).
+*/
 
 typedef struct s_window
 {
-	void		(*tick)();
-	void		(*render)();
-	void		*loop_data;
-	void		(*on_key_press)();
-	void		(*on_key_release)();
-	void		*key_data;
-	void		*mlx_window;
-	t_input		input;
-	t_renderer	renderer;
+	void			*mlx_context;
+	void			*mlx_window;
+	char			*title;
+	bool			open;
+	t_input			input;
+	union {
+		t_renderer	renderer;
+		struct {
+			t_u32	width;
+			t_u32	height;
+		};
+	};
+	void			(*loop_callback)();
+	void			*loop_data;
+	void			(*on_key_press)();
+	void			(*on_key_release)();
+	void			*key_data;
+	void			(*on_mouse_move)();
+	void			*mouse_move_data;
+	void			(*on_mouse_button_press)();
+	void			(*on_mouse_button_release)();
+	void			*mouse_button_data;
 }	t_window;
 
 // ft_window.c
 bool			ft_window_alloc(t_window *window,
-					int width, int height, char *title);
-void			ft_window_init(t_window *window);
-void			ft_window_loop(t_window *window,
-					bool (*tick)(), bool (*render)(), void *user_data);
+					t_u32 width, t_u32 height, char *title);
+bool			ft_window_open(t_window *window);
+void			ft_window_close(t_window *window);
 void			ft_window_free(t_window *window);
 
-// ft_window_handlers.c 
-void			ft_window_attach_handlers(t_window *window);
-int				ft_window_keypress_handler(int keysym, void *context);
-int				ft_window_loop_handler(t_window_loop_callback *callback);
-int				ft_window_quit_handler(void *context);
-
-/******************************************************************************/
-/* 	CONTEXT																	  */
-/******************************************************************************/
-
-// ft_context.c
-bool			ft_mlx_context_add_window(void);
-void			*ft_mlx_context_get(void);
-void			ft_mlx_context_remove_window(void);
+// ft_window_handlers.c
+int				ft_window_loop(t_window *window);
+int				ft_window_cross_clicked(t_window *window);
 
 #endif

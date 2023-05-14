@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:40:15 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 12:40:30 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:47:23 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_mouse
 }	t_mouse;
 
 // ft_mouse.c
-void			ft_mouse_init(t_mouse *mouse, void *mlx_window);
+void			ft_mouse_init(t_mouse *mouse);
 void			ft_mouse_update(t_mouse *mouse);
 bool			ft_mouse_moved(t_mouse *mouse);
 
@@ -42,7 +42,7 @@ bool			ft_mouse_zone_clicked(t_mouse *mouse,
 					t_rect rect, t_button_id button);
 
 // ft_mouse_handlers.c
-void			ft_mouse_attach_handlers(t_mouse *mouse, void *mlx_window);
+void			ft_mouse_attach_handlers(t_mouse *mouse);
 int				ft_mouse_press_handler(
 					int button, int x, int y, t_mouse *mouse);
 int				ft_mouse_release_handler(

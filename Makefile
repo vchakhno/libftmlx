@@ -14,13 +14,12 @@ include src/drawing/Makefile
 
 SRC_DIR		:= src
 SRCS		:= \
-	$(addprefix /math/,$(MATH_SRCS)) \
-	$(addprefix /input/,$(INPUT_SRCS)) \
-	$(addprefix /drawing/,$(DRAWING_SRCS)) \
+	$(addprefix math/,$(MATH_SRCS)) \
+	$(addprefix input/,$(INPUT_SRCS)) \
+	$(addprefix drawing/,$(DRAWING_SRCS)) \
 	ft_image.c \
 	ft_color_rgb.c \
 	ft_color_hsv.c \
-	ft_mlx_context.c \
 	ft_renderer.c \
 	ft_window_handlers.c \
 	ft_window.c
