@@ -6,13 +6,14 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 17:07:52 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:38:05 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
 
+# include <libft/fixed_types.h>
 # include <stdbool.h>
 
 typedef struct s_point

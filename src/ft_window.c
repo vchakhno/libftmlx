@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:48:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 20:36:27 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:29:23 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ bool	ft_window_open(t_window *window)
 		DestroyNotify, NoEventMask, &ft_window_cross_clicked, window);
 	mlx_loop_hook(window->mlx_context, ft_window_loop, window);
 	window->open = true;
+	ft_mouse_init(&window->input.mouse);
+	ft_mouse_attach_handlers(&window->input.mouse);
+	mlx_hook(window->mlx_window,
+		KeyPress, KeyPressMask, &ft_key_pressed_handler, window);
+	mlx_hook(window->mlx_window,
+		KeyRelease, KeyReleaseMask, &ft_key_released_handler, window);
 	mlx_loop(window->mlx_context);
 	return (true);
 }

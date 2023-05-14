@@ -22,6 +22,7 @@ SRCS		:= \
 	ft_color_hsv.c \
 	ft_renderer.c \
 	ft_window_handlers.c \
+	ft_window_hooks.c \
 	ft_window.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 

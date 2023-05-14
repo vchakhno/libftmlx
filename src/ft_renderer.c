@@ -6,12 +6,13 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 02:46:02 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 20:04:39 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:32:55 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlxft/mlxft.h"
 #include <mlx.h>
+#include <stdio.h>
 
 bool	ft_renderer_alloc(t_renderer *renderer, int width, int height)
 {

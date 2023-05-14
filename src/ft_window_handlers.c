@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:55:56 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 20:34:54 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:28:06 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,19 @@ int	ft_window_loop(t_window *window)
 int	ft_window_cross_clicked(t_window *window)
 {
 	ft_window_close(window);
+	return (0);
+}
+
+int	ft_key_pressed_handler(int key, t_window *window)
+{
+	if (window->on_key_press)
+		window->on_key_press(window, key, window->key_data);
+	return (0);
+}
+
+int	ft_key_released_handler(int key, t_window *window)
+{
+	if (window->on_key_release)
+		window->on_key_release(window, key, window->key_data);
 	return (0);
 }

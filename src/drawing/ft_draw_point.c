@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 17:14:38 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:38:34 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 void	ft_draw_solid_point(t_renderer *renderer,
 	t_point point, t_color color)
 {
-	if (point.x < 0 || point.x >= renderer->width)
+	if (point.x < 0 || point.x >= (int) renderer->width)
 		return ;
-	if (point.y < 0 || point.y >= renderer->height)
+	if (point.y < 0 || point.y >= (int) renderer->height)
 		return ;
 	*ft_image_get_pixel(&renderer->back_buffer, point) = color;
 }
@@ -33,9 +33,9 @@ void	ft_draw_solid_point__unchecked(t_renderer *renderer,
 void	ft_draw_opaque_point(t_renderer *renderer,
 	t_point point, t_color color, float opacity)
 {
-	if (point.x < 0 || point.x >= renderer->width)
+	if (point.x < 0 || point.x >= (int) renderer->width)
 		return ;
-	if (point.y < 0 || point.y >= renderer->height)
+	if (point.y < 0 || point.y >= (int) renderer->height)
 		return ;
 	ft_draw_opaque_point__unchecked(renderer, point, color, opacity);
 }

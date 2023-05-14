@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 19:04:41 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:28:33 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,20 @@ void			ft_window_free(t_window *window);
 // ft_window_handlers.c
 int				ft_window_loop(t_window *window);
 int				ft_window_cross_clicked(t_window *window);
+int				ft_key_pressed_handler(int key, t_window *window);
+int				ft_key_released_handler(int key, t_window *window);
+
+// ft_window_hooks.c
+void			ft_window_loop_hook(t_window *window,
+					void (*loop_callback), void *loop_data);
+void			ft_window_key_hook(t_window *window,
+					void (*on_key_press), void (*on_key_release),
+					void *key_data);
+void			ft_window_mouse_button_hook(t_window *window,
+					void (*on_mouse_button_press),
+					void (*on_mouse_button_release),
+					void *mouse_button_data);
+void			ft_window_mouse_move_hook(t_window *window,
+					void (*on_mouse_move), void *mouse_move_data);
 
 #endif
