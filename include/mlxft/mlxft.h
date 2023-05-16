@@ -36,12 +36,10 @@ typedef struct s_img
 }	t_img;
 
 // ft_image.c
-bool			ft_image_alloc(t_img *img,
-					void *mlx_context, int width, int height);
-bool			ft_image_alloc_from_xpm(t_img *img,
-					void *mlx_context, char *filename);
+bool			ft_image_alloc(t_img *img, int width, int height);
+bool			ft_image_alloc_from_xpm(t_img *img, char *filename);
 t_color			*ft_image_get_pixel(t_img *img, t_point pos);
-void			ft_image_free(t_img *img, void *mlx_context);
+void			ft_image_free(t_img *img);
 
 typedef struct s_renderer
 {
@@ -168,5 +166,19 @@ void			ft_window_mouse_button_hook(t_window *window,
 					void *mouse_button_data);
 void			ft_window_mouse_move_hook(t_window *window,
 					void (*on_mouse_move), void *mouse_move_data);
+
+/******************************************************************************/
+/* 	IMAGE CONTEXT															  */
+/******************************************************************************/
+
+typedef struct s_image_context
+{
+	void	*mlx_context;
+	t_u32	image_count;
+}	t_image_context;
+
+t_image_context	*ft_image_context(void);
+bool			ft_image_context_increment(void **mlx_context);
+void			ft_image_context_decrement(void);
 
 #endif

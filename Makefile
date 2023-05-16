@@ -20,6 +20,7 @@ SRCS		:= \
 	ft_image.c \
 	ft_color_rgb.c \
 	ft_color_hsv.c \
+	ft_image_context.c \
 	ft_renderer.c \
 	ft_window_handlers.c \
 	ft_window_hooks.c \

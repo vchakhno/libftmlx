@@ -16,12 +16,7 @@
 
 bool	ft_renderer_alloc(t_renderer *renderer, int width, int height)
 {
-	t_window	*window;
-
-	window = (void *)renderer - (
-			(void *)&((t_window *)0)->renderer - (void *)0);
-	if (!ft_image_alloc(&renderer->back_buffer,
-			window->mlx_context, width, height))
+	if (!ft_image_alloc(&renderer->back_buffer, width, height))
 		return (false);
 	renderer->width = width;
 	renderer->height = height;
@@ -30,11 +25,7 @@ bool	ft_renderer_alloc(t_renderer *renderer, int width, int height)
 
 void	ft_renderer_free(t_renderer *renderer)
 {
-	t_window	*window;
-
-	window = (void *)renderer - (
-			(void *)&((t_window *)0)->renderer - (void *)0);
-	ft_image_free(&renderer->back_buffer, window->mlx_context);
+	ft_image_free(&renderer->back_buffer);
 }
 
 void	ft_renderer_display(t_renderer *renderer)

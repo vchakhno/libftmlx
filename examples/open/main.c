@@ -22,19 +22,18 @@ typedef struct s_app
 	float	offy;
 }	t_app;
 
-bool	app_alloc(t_app *app, t_window *window)
+bool	app_alloc(t_app *app)
 {
-	if (!ft_image_alloc_from_xpm(&app->image,
-			window->mlx_context, "vchakhno.xpm"))
+	if (!ft_image_alloc_from_xpm(&app->image, "assets/katana_zero.xpm"))
 		return (false);
 	app->offx = 0;
 	app->offy = 0;
 	return (true);
 }
 
-void	app_free(t_app *app, t_window *window)
+void	app_free(t_app *app)
 {
-	ft_image_free(&app->image, window->mlx_context);
+	ft_image_free(&app->image);
 }
 
 void	loop(t_window *window, t_app *app)
@@ -82,7 +81,7 @@ int	main(void)
 	setbuf(stdout, NULL);
 	if (!ft_window_alloc(&window, 800, 600, "Test window"))
 		return (1);
-	if (!app_alloc(&app, &window))
+	if (!app_alloc(&app))
 	{
 		ft_window_free(&window);
 		return (1);
@@ -91,11 +90,11 @@ int	main(void)
 	ft_window_key_hook(&window, keys, NULL, &app);
 	if (!ft_window_open(&window))
 	{
-		app_free(&app, &window);
+		app_free(&app);
 		ft_window_free(&window);
 		return (1);
 	}
-	app_free(&app, &window);
+	app_free(&app);
 	ft_window_free(&window);
 	return (0);
 }
