@@ -10,18 +10,15 @@ NAME		:= libftmlx.a
 
 include src/math/Makefile
 include src/input/Makefile
-include src/drawing/Makefile
+include src/image/Makefile
 
 SRC_DIR		:= src
 SRCS		:= \
 	$(addprefix math/,$(MATH_SRCS)) \
 	$(addprefix input/,$(INPUT_SRCS)) \
-	$(addprefix drawing/,$(DRAWING_SRCS)) \
-	image.c \
-	color_rgb.c \
+	$(addprefix image/,$(IMAGE_SRCS)) \
+	color_blending.c \
 	color_hsv.c \
-	image_context.c \
-	renderer.c \
 	window_handlers.c \
 	window_hooks.c \
 	window.c
@@ -97,9 +94,6 @@ $(LIB_DIR)/minilibx/: | $(LIB_DIR)
 
 $(LIB_DIR)/libft/: | $(LIB_DIR)
 	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
-
-$(LIB_DIR)/ftmlx/: | $(LIB_DIR)
-	git clone git@github.com:vchakhno/ftmlx.git $(LIB_DIR)/ftmlx
 
 .SECONDEXPANSION:
 $(LIB_TARGETS): $(LIB_DIR)/%.a: | $(LIB_DIR)/$$(dir %.a)

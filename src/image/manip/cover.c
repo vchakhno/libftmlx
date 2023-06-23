@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_rect.c                                     :+:      :+:    :+:   */
+/*   cover.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
+/*   Created: 2023/06/23 13:46:20 by vchakhno          #+#    #+#             */
+/*   Updated: 2023/06/23 13:49:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftmlx/libftmlx.h"
-#include <math.h>
-#include <stdio.h>
+#include "libftmlx/image.h"
 
-void	ft_fill_rect(t_renderer *renderer,
-	t_rect rect, t_color color, float opacity)
+void	ft_image_cover(t_image *image, t_color color)
 {
-	int	i;
-	int	j;
+	t_u32	i;
+	t_u32	j;
 
-	i = rect.y;
-	while (i < rect.y + rect.h)
+	i = 0;
+	while (i < image->height)
 	{
-		j = rect.x;
-		while (j < rect.x + rect.w)
+		j = 0;
+		while (j < image->width)
 		{
-			ft_draw_opaque_point(renderer,
-				(t_point){j, i}, color, opacity);
+			ft_image_draw_pixel__unchecked(image, j, i, color);
 			j++;
 		}
 		i++;

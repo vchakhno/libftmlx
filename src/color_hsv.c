@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_hsv.c                                     :+:      :+:    :+:   */
+/*   color_hsv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:54:54 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 08:34:23 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ static t_color	ft_color_from_hsv__color(
 	float	chroma;
 
 	chroma = value * saturation;
-	return (
-		ft_color_from_float_rgb(
-			value,
-			value + chroma * (-fabsf(ft_math_float_mod(hue * 6, 2.f) - 1)),
-			value - chroma
-		)
-	);
+	return ((t_color){
+		.r = (t_u8)(value * 255),
+		.g = (t_u8)(255 * (
+			value + chroma * -fabsf(ft_math_float_mod(hue * 6, 2.f) - 1))),
+		.b = (t_u8)(value - chroma)
+	});
 }
 
 t_color	ft_color_from_float_hsv(float hue, float saturation, float value)

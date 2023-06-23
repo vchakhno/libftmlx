@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_rgb.c                                     :+:      :+:    :+:   */
+/*   color_blend.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:54:54 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 08:05:10 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftmlx/color.h"
 #include <math.h>
 
-t_color	ft_color_from_char_rgb(char red, char green, char blue)
+t_color	ft_color_blend(t_color background, t_color overlay)
 {
-	return ((t_color){
-		.r = red,
-		.g = green,
-		.b = blue,
-	});
-}
+	t_f32	background_opacity;
+	t_f32	overlay_opacity;
 
-t_color	ft_color_from_float_rgb(float red, float green, float blue)
-{
+	background_opacity = (t_f32) background.a / 255;
+	overlay_opacity = (t_f32) overlay.a / 255;
 	return ((t_color){
-		.r = (char)(red * 255),
-		.g = (char)(green * 255),
-		.b = (char)(blue * 255),
-	});
-}
-
-t_color	ft_color_blend(t_color background, t_color added, float factor)
-{
-	float	inverse;
-
-	inverse = 1 - factor;
-	return ((t_color){
-		.r = (char)(background.r * inverse + added.r * factor),
-		.g = (char)(background.g * inverse + added.g * factor),
-		.b = (char)(background.b * inverse + added.b * factor)
+		.r = (t_u8)(overlay.r * overlay_opacity
+		+ background.r * background_opacity * (1 - overlay_opacity)),
+		.g = (t_u8)(overlay.g * overlay_opacity
+		+ background.g * background_opacity * (1 - overlay_opacity)),
+		.b = (t_u8)(overlay.b * overlay_opacity
+		+ background.b * background_opacity * (1 - overlay_opacity)),
+		.a = (t_u8)(255 * (
+			overlay_opacity + background_opacity * (1 - overlay_opacity)
+		))
 	});
 }

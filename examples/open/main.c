@@ -6,18 +6,18 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 17:58:42 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:05:50 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftmlx/ftmlx.h>
+#include <libftmlx/libftmlx.h>
 #include <stdio.h>
 #include <X11/keysym.h>
 #include <mlx.h>
 
 typedef struct s_app
 {
-	t_img	image;
+	t_image	image;
 	float	offx;
 	float	offy;
 }	t_app;
@@ -38,14 +38,12 @@ void	app_free(t_app *app)
 
 void	loop(t_window *window, t_app *app)
 {
-	mlx_do_sync(window->mlx_context);
-	ft_renderer_clear(&window->renderer, (t_color) 0);
-	ft_render_image(
-		&window->renderer, (t_drect){app->offx, app->offy,
+	ft_image_clear(&window->back_buffer, (t_color) 0xFF000000);
+	ft_image_replace_image(
+		&window->back_buffer, (t_drect){app->offx, app->offy,
 		window->width, window->height},
 		&app->image, (t_drect){0, 0, app->image.width, app->image.height});
-	ft_renderer_display(&window->renderer);
-	mlx_do_sync(window->mlx_context);
+	ft_window_render_backbuffer(window);
 }
 
 void	keys(t_window *window, int key, t_app *app)

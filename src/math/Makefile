@@ -1,3 +1,4 @@
 MATH_SRCS = \
 	geometry.c \
-	lerp.c
+	lerp.c \
+	rect.c \

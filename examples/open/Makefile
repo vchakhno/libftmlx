@@ -26,12 +26,12 @@ DEPS		:= $(OBJS:.o=.d)
 LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))lib
 LIBS		:= ftmlx ft mlx X11 m Xext
 LIB_TARGETS	:= \
-				ftmlx/libftmlx.a \
+				libftmlx/libftmlx.a \
 				libft/libft.a \
 				minilibx/libmlx.a
 LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
 LIB_INCS	:= \
-				ftmlx/include \
+				libftmlx/include \
 				libft/include \
 				minilibx/
 INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))

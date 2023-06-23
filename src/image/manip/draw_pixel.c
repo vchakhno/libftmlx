@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   draw_pixel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 03:58:02 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 07:30:55 by vchakhno         ###   ########.fr       */
+/*   Created: 2023/06/23 13:42:44 by vchakhno          #+#    #+#             */
+/*   Updated: 2023/06/23 13:45:40 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libftmlx/image.h"
 
-# include <libft/arithmetic/fixed_types.h>
+void	ft_image_draw_pixel(
+	t_image *image, t_u32 x, t_u32 y, t_color color
+) {
+	if (x < image->width && y < image->height)
+		ft_image_draw_pixel__unchecked(image, x, y, color);
+}
 
-typedef union u_color
-{
-	struct {
-		t_u8	b;
-		t_u8	g;
-		t_u8	r;
-		t_u8	a;
-	};
-	t_u32	hex;
-}	t_color;
+void	ft_image_draw_pixel__unchecked(
+	t_image *image, t_u32 x, t_u32 y, t_color color
+) {
+	t_color	*pixel;
 
-t_color	ft_color_from_f32_hsv(t_f32 hue, t_f32 saturation, t_f32 value);
-t_color	ft_color_blend(t_color background, t_color overlay);
-
-#endif
+	pixel = ft_image_get_pixel(image, x, y);
+	*pixel = ft_color_blend(*pixel, color);
+}
