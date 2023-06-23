@@ -11,17 +11,16 @@ NAME		:= libftmlx.a
 include src/math/Makefile
 include src/input/Makefile
 include src/image/Makefile
+include src/window/Makefile
 
 SRC_DIR		:= src
 SRCS		:= \
 	$(addprefix math/,$(MATH_SRCS)) \
 	$(addprefix input/,$(INPUT_SRCS)) \
 	$(addprefix image/,$(IMAGE_SRCS)) \
+	$(addprefix window/,$(WINDOW_SRCS)) \
 	color_blending.c \
-	color_hsv.c \
-	window_handlers.c \
-	window_hooks.c \
-	window.c
+	color_hsv.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
 INCS		:= include

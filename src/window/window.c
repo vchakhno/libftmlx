@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:48:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 08:30:16 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:50:51 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,7 @@ bool	ft_window_alloc(
 	}
 	window->title = title;
 	window->open = false;
-	window->loop_callback = NULL;
-	window->on_key_press = NULL;
-	window->on_key_release = NULL;
-	window->on_mouse_button_press = NULL;
-	window->on_mouse_button_release = NULL;
-	window->on_mouse_move = NULL;
+	ft_window_handlers_init(&window->handlers);
 	return (true);
 }
 
@@ -45,16 +40,9 @@ bool	ft_window_open(t_window *window)
 			window->width, window->height, window->title);
 	if (!window->mlx_window)
 		return (false);
-	mlx_hook(window->mlx_window,
-		DestroyNotify, NoEventMask, &ft_window_cross_clicked, window);
-	mlx_loop_hook(window->mlx_context, ft_window_loop, window);
 	ft_mouse_init(&window->input.mouse);
-	ft_mouse_attach_handlers(&window->input.mouse);
-	mlx_hook(window->mlx_window,
-		KeyPress, KeyPressMask, &ft_key_pressed_handler, window);
-	mlx_hook(window->mlx_window,
-		KeyRelease, KeyReleaseMask, &ft_key_released_handler, window);
 	window->open = true;
+	ft_window_handlers_setup(window);
 	mlx_loop(window->mlx_context);
 	return (true);
 }
