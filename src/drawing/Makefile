@@ -1,7 +1,7 @@
 DRAWING_SRCS = \
-	ft_draw_point.c \
-	ft_draw_rect.c \
-	ft_draw_circle.c \
-	ft_render_image.c \
-	ft_draw_line.c #\
-	ft_draw_triangle.c
+	draw_point.c \
+	draw_rect.c \
+	draw_circle.c \
+	render_image.c \
+	draw_line.c #\
+	draw_triangle.c

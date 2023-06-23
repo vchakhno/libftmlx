@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_rect.c                                     :+:      :+:    :+:   */
+/*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
+/*   Created: 2023/01/08 01:56:24 by vchakhno          #+#    #+#             */
+/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmlx/ftmlx.h"
-#include <math.h>
-#include <stdio.h>
+#include "libftmlx/libftmlx.h"
 
-void	ft_fill_rect(t_renderer *renderer,
-	t_rect rect, t_color color, float opacity)
+void	ft_input_init(t_input *input)
 {
-	int	i;
-	int	j;
+	ft_mouse_init(&input->mouse);
+}
 
-	i = rect.y;
-	while (i < rect.y + rect.h)
-	{
-		j = rect.x;
-		while (j < rect.x + rect.w)
-		{
-			ft_draw_opaque_point(renderer,
-				(t_point){j, i}, color, opacity);
-			j++;
-		}
-		i++;
-	}
+void	ft_input_update(t_input *input)
+{
+	ft_mouse_update(&input->mouse);
 }

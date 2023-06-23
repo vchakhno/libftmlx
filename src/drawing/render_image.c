@@ -6,12 +6,12 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmlx/ftmlx.h"
-#include "ftmlx/math.h"
+#include "libftmlx/libftmlx.h"
+#include "libftmlx/math.h"
 #include <math.h>
 #include <stdio.h>
 

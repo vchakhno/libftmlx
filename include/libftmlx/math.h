@@ -6,13 +6,13 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:44:51 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:02:05 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
-# include "ftmlx/math.h"
+# include "libftmlx/math.h"
 # undef MATH_H
 #else
 # ifndef FTMLX_MATH_H

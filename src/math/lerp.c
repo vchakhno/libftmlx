@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_input.c                                         :+:      :+:    :+:   */
+/*   ft_lerp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 01:56:24 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
+/*   Created: 2022/12/30 20:08:47 by vchakhno          #+#    #+#             */
+/*   Updated: 2023/06/23 05:54:54 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmlx/ftmlx.h"
+#include "libftmlx/math.h"
+#include <libft/arithmetic/bounds.h>
+#include <math.h>
 
-void	ft_input_init(t_input *input)
+double	ft_lerp(double value, t_drange from, t_drange to)
 {
-	ft_mouse_init(&input->mouse);
-}
-
-void	ft_input_update(t_input *input)
-{
-	ft_mouse_update(&input->mouse);
+	value = (value - from.start) / (from.end - from.start);
+	value = ft_f64_clamp(0., value, 1.);
+	value = value * (to.end - to.start) + to.start;
+	return (value);
 }

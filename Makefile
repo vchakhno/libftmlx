@@ -17,14 +17,14 @@ SRCS		:= \
 	$(addprefix math/,$(MATH_SRCS)) \
 	$(addprefix input/,$(INPUT_SRCS)) \
 	$(addprefix drawing/,$(DRAWING_SRCS)) \
-	ft_image.c \
-	ft_color_rgb.c \
-	ft_color_hsv.c \
-	ft_image_context.c \
-	ft_renderer.c \
-	ft_window_handlers.c \
-	ft_window_hooks.c \
-	ft_window.c
+	image.c \
+	color_rgb.c \
+	color_hsv.c \
+	image_context.c \
+	renderer.c \
+	window_handlers.c \
+	window_hooks.c \
+	window.c
 SRCS		:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
 INCS		:= include

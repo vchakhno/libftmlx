@@ -1,5 +1,5 @@
 INPUT_SRCS = \
-	ft_input.c \
-	ft_mouse.c \
-	ft_mouse_buttons.c \
-	ft_mouse_handlers.c
+	input.c \
+	mouse.c \
+	mouse_buttons.c \
+	mouse_handlers.c

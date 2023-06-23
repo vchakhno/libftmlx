@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlxft.h                                            :+:      :+:    :+:   */
+/*   libftmlx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:43:48 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:54:12 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTMLX_H
-# define FTMLX_H
+#ifndef LIBFTMLX_H
+# define LIBFTMLX_H
 
 # include <libft/arithmetic/fixed_types.h>
 # include "math.h"
@@ -112,7 +112,7 @@ void			ft_renderer_clear(t_renderer *renderer, t_color color);
 		(t_window *window, int button, void *data)
 
 	The prototypes are hidden in this way so that the void *data coerces without
-	warning into any type, which these a bit more comfortable to use (no cast).
+	warning into any type, which is a bit more comfortable to use (no cast).
 */
 
 typedef struct s_window
