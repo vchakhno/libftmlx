@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 06:09:51 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:19 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/mlxft.h"
+#include "ftmlx/ftmlx.h"
 #include <mlx.h>
 
 bool	ft_mouse_button_down(t_mouse *mouse, t_button_id button)

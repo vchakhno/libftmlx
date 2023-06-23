@@ -2,7 +2,7 @@
 # 	Makefile based on clemedon's Makefile tutorial							   #
 # **************************************************************************** #
 
-NAME		:= libmlxft.a
+NAME		:= libftmlx.a
 
 # **************************************************************************** #
 # 	SOURCES																	   #
@@ -98,8 +98,8 @@ $(LIB_DIR)/minilibx/: | $(LIB_DIR)
 $(LIB_DIR)/libft/: | $(LIB_DIR)
 	git clone git@github.com:vchakhno/libft.git $(LIB_DIR)/libft
 
-$(LIB_DIR)/mlxft/: | $(LIB_DIR)
-	git clone git@github.com:vchakhno/mlxft.git $(LIB_DIR)/mlxft
+$(LIB_DIR)/ftmlx/: | $(LIB_DIR)
+	git clone git@github.com:vchakhno/ftmlx.git $(LIB_DIR)/ftmlx
 
 .SECONDEXPANSION:
 $(LIB_TARGETS): $(LIB_DIR)/%.a: | $(LIB_DIR)/$$(dir %.a)

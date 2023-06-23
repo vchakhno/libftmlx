@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_line copy.c                                :+:      :+:    :+:   */
+/*   ft_fill_triangle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/02/02 06:40:12 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/mlxft.h"
+#include "ftmlx/ftmlx.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

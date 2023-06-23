@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 16:09:41 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/color.h"
+#include "ftmlx/color.h"
 #include <math.h>
 
 t_color	ft_color_from_char_rgb(char red, char green, char blue)

@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:07:48 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/03/06 23:10:39 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/math.h"
+#include "ftmlx/math.h"
 #include <math.h>
 
 bool	ft_circle_contains(t_circle circle, t_point point)

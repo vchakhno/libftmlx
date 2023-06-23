@@ -6,17 +6,17 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 03:19:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:44:51 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
-# include "math.h"
+# include "ftmlx/math.h"
 # undef MATH_H
 #else
-# ifndef MLXFT_MATH_H
-#  define MLXFT_MATH_H
+# ifndef FTMLX_MATH_H
+#  define FTMLX_MATH_H
 
 #  include <libft/arithmetic/fixed_types.h>
 #  include <stdbool.h>

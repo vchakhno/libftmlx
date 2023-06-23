@@ -24,14 +24,14 @@ DEPS		:= $(OBJS:.o=.d)
 # **************************************************************************** #
 
 LIB_DIR		?= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))lib
-LIBS		:= mlxft ft mlx X11 m Xext
+LIBS		:= ftmlx ft mlx X11 m Xext
 LIB_TARGETS	:= \
-				mlxft/libmlxft.a \
+				ftmlx/libftmlx.a \
 				libft/libft.a \
 				minilibx/libmlx.a
 LIB_TARGETS	:= $(addprefix $(LIB_DIR)/,$(LIB_TARGETS))
 LIB_INCS	:= \
-				mlxft/include \
+				ftmlx/include \
 				libft/include \
 				minilibx/
 INCS		+= $(addprefix $(LIB_DIR)/,$(LIB_INCS))

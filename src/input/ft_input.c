@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:56:24 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 04:51:23 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/mlxft.h"
+#include "ftmlx/ftmlx.h"
 
 void	ft_input_init(t_input *input)
 {

@@ -6,12 +6,12 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 02:17:16 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:48 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLXFT_H
-# define MLXFT_H
+#ifndef FTMLX_H
+# define FTMLX_H
 
 # include <libft/arithmetic/fixed_types.h>
 # include "math.h"

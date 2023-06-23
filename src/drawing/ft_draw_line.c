@@ -6,14 +6,15 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/02/02 07:04:23 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxft/mlxft.h"
+#include "ftmlx/ftmlx.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <libft/data/mem.h>
 
 void	ft_draw_solid_line2(t_renderer *renderer,
 	t_line line, t_color color)
@@ -79,15 +80,6 @@ void	ft_draw_horizontal_line(t_renderer *renderer,
 	}
 }
 
-void	ft_swap(int *a, int *b)
-{
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
 void	ft_draw_solid_line(t_renderer *renderer,
 	t_line line, t_color color)
 {
@@ -97,8 +89,8 @@ void	ft_draw_solid_line(t_renderer *renderer,
 
 	if (line.end.y < line.start.y)
 	{
-		ft_swap(&line.start.x, &line.end.x);
-		ft_swap(&line.start.y, &line.end.y);
+		ft_mem_swap(&line.start.x, &line.end.x, sizeof(int));
+		ft_mem_swap(&line.start.y, &line.end.y, sizeof(int));
 	}
 	dy = line.end.y - line.start.y;
 	if (!dy)

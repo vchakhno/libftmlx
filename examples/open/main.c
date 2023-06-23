@@ -6,11 +6,11 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 17:58:42 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 21:48:10 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 05:43:21 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlxft/mlxft.h>
+#include <ftmlx/ftmlx.h>
 #include <stdio.h>
 #include <X11/keysym.h>
 #include <mlx.h>
