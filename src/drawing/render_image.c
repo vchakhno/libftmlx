@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_image.c                                  :+:      :+:    :+:   */
+/*   render_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:24:39 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,28 @@ void	ft_render_image__unchecked(
 	t_renderer *renderer, t_drect dst_rect,
 	t_img *img, t_drect src_rect
 ) {
-	int		i;
-	int		j;
+	t_u32	dst_i;
+	t_u32	dst_j;
+	t_u32	src_i;
+	t_u32	src_j;
 	t_color	pixel_color;
-	t_point	src_pos;
 
-	i = 0;
-	while (i < (int) dst_rect.h)
+	dst_i = 0;
+	while (dst_i < (t_u32) dst_rect.h)
 	{
-		src_pos.y = (double) i / dst_rect.h
+		src_i = (double) dst_i / dst_rect.h
 			* src_rect.h + src_rect.y;
-		j = 0;
-		while (j < (int) dst_rect.w)
+		dst_j = 0;
+		while (dst_j < (t_u32) dst_rect.w)
 		{
-			src_pos.x = (double) j / dst_rect.w
+			src_j = (double) dst_j / dst_rect.w
 				* src_rect.w + src_rect.x;
-			pixel_color = *ft_image_get_pixel(img, src_pos);
+			pixel_color = *ft_image_get_pixel(img, src_j, src_i);
 			*ft_image_get_pixel(&renderer->back_buffer,
-				(t_point){j + (int) dst_rect.x, i + (int) dst_rect.y}
+				dst_j + (t_u32) dst_rect.x, dst_i + (t_u32) dst_rect.y
 				) = pixel_color;
-			j++;
+			dst_j++;
 		}
-		i++;
+		dst_i++;
 	}
 }

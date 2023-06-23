@@ -6,12 +6,14 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:58:02 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/01/31 16:09:29 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:13:09 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
+
+# include <libft/arithmetic/fixed_types.h>
 
 typedef union u_color
 {
@@ -20,7 +22,7 @@ typedef union u_color
 		unsigned char	g;
 		unsigned char	r;
 	};
-	int	hex;
+	t_u32	hex;
 }	t_color;
 
 t_color	ft_color_from_char_rgb(char red, char green, char blue);

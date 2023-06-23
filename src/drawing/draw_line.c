@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_line.c                                     :+:      :+:    :+:   */
+/*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:26:16 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	ft_draw_solid_line2(t_renderer *renderer,
 			j = i / fabs(dx) * dy + 0.5f;
 			if (dx > 0)
 				ft_draw_solid_point(renderer,
-					(t_point){i + line.start.x, j + line.start.y}, color);
+					i + line.start.x, j + line.start.y, color);
 			else
 				ft_draw_solid_point(renderer,
-					(t_point){-i + line.start.x, j + line.start.y}, color);
+					-i + line.start.x, j + line.start.y, color);
 			i++;
 		}
 	}
@@ -50,10 +50,10 @@ void	ft_draw_solid_line2(t_renderer *renderer,
 			j = i / fabs(dy) * dx + 0.5f;
 			if (dy > 0)
 				ft_draw_solid_point(renderer,
-					(t_point){j + line.start.x, i + line.start.y}, color);
+					j + line.start.x, i + line.start.y, color);
 			else
 				ft_draw_solid_point(renderer,
-					(t_point){j + line.start.x, -i + line.start.y}, color);
+					j + line.start.x, -i + line.start.y, color);
 			i++;
 		}
 	}
@@ -75,7 +75,7 @@ void	ft_draw_horizontal_line(t_renderer *renderer,
 	while (j <= abs(line.end_x - line.start_x))
 	{
 		ft_draw_solid_point(renderer,
-			(t_point){j + fmin(line.start_x, line.end_x), line.y}, color);
+			j + fmin(line.start_x, line.end_x), line.y, color);
 		j++;
 	}
 }

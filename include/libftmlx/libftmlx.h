@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:54:12 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:19:40 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,13 @@
 # include "input.h"
 # include <stdbool.h>
 # include <time.h>
+# include "libftmlx/image.h"
 
 typedef struct s_window	t_window;
 
 /******************************************************************************/
 /* 	OUTPUT																	  */
 /******************************************************************************/
-
-typedef struct s_img
-{
-	t_u32	width;
-	t_u32	height;
-	void	*mlx_img;
-	char	*addr;
-	t_u32	line_len;
-}	t_img;
-
-// ft_image.c
-bool			ft_image_alloc(t_img *img, int width, int height);
-bool			ft_image_alloc_from_xpm(t_img *img, char *filename);
-t_color			*ft_image_get_pixel(t_img *img, t_point pos);
-void			ft_image_free(t_img *img);
 
 typedef struct s_renderer
 {
@@ -62,9 +48,9 @@ void			ft_renderer_display(t_renderer *renderer);
 
 // ft_draw.c
 void			ft_draw_solid_point(t_renderer *renderer,
-					t_point point, t_color color);
+					t_u32 x, t_u32 y, t_color color);
 void			ft_draw_solid_point__unchecked(t_renderer *renderer,
-					t_point point, t_color color);
+					t_u32 x, t_u32 y, t_color color);
 void			ft_draw_opaque_point(t_renderer *renderer,
 					t_point point, t_color color, float opacity);
 void			ft_draw_opaque_point__unchecked(t_renderer *renderer,

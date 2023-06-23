@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_renderer.c                                      :+:      :+:    :+:   */
+/*   renderer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 02:46:02 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 06:29:54 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_renderer_clear(t_renderer *renderer, t_color color)
 		j = 0;
 		while (j < renderer->back_buffer.width)
 		{
-			ft_draw_solid_point(renderer, (t_point){j, i}, color);
+			ft_draw_solid_point(renderer, j, i, color);
 			j++;
 		}
 		i++;
