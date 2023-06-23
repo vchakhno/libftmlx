@@ -6,15 +6,20 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 21:38:05 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 03:19:09 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
+# include "math.h"
+# undef MATH_H
+#else
+# ifndef MLXFT_MATH_H
+#  define MLXFT_MATH_H
 
-# include <libft/fixed_types.h>
-# include <stdbool.h>
+#  include <libft/arithmetic/fixed_types.h>
+#  include <stdbool.h>
 
 typedef struct s_point
 {
@@ -62,4 +67,5 @@ bool		ft_rect_contains_point(t_rect rect, t_point point);
 
 double		ft_lerp(double value, t_drange from, t_drange to);
 
+# endif
 #endif

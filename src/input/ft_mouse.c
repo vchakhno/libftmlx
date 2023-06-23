@@ -6,20 +6,21 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 06:09:51 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 19:30:23 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 04:57:54 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlxft/mlxft.h"
 #include <mlx.h>
+#include <stddef.h>
 
 void	ft_mouse_init(t_mouse *mouse)
 {
 	t_window	*window;
 	int			i;
 
-	window = (void *)mouse - (
-			(void *)&((t_window *)0)->input.mouse - (void *)0);
+	window = (void *)mouse \
+			- ((ptrdiff_t) &((t_window *)0)->input.mouse);
 	mlx_mouse_get_pos(window->mlx_context, window->mlx_window,
 		&mouse->pos.x, &mouse->pos.y);
 	mouse->previous_pos = mouse->pos;

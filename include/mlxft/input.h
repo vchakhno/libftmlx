@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:40:15 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 19:47:23 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 04:51:33 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_input
 }	t_input;
 
 // ft_input.c
-void			ft_input_init(t_input *input, void *mlx_window);
+void			ft_input_init(t_input *input);
 void			ft_input_update(t_input *input);
 
 #endif

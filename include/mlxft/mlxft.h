@@ -6,14 +6,14 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/05/14 21:28:33 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 02:17:16 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLXFT_H
 # define MLXFT_H
 
-# include <libft/fixed_types.h>
+# include <libft/arithmetic/fixed_types.h>
 # include "math.h"
 # include "color.h"
 # include "input.h"
