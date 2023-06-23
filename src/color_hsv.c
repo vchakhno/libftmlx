@@ -6,19 +6,15 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 08:34:23 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:08:50 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftmlx/color.h"
+#include <libft/arithmetic/float_math.h>
 #include <math.h>
 
-static float	ft_math_float_mod(float f, float m)
-{
-	return (f - (int)(f / m) *m);
-}
-
-static t_color	ft_color_from_hsv__rotate(t_color color, float hue)
+static t_color	ft_color_from_hsv__rotate(t_color color, t_f32 hue)
 {
 	int	rotation;
 
@@ -30,7 +26,7 @@ static t_color	ft_color_from_hsv__rotate(t_color color, float hue)
 	return ((t_color){.r = color.g, .g = color.b, .b = color.r});
 }
 
-static t_color	ft_color_from_hsv__swap(t_color color, float hue)
+static t_color	ft_color_from_hsv__swap(t_color color, t_f32 hue)
 {
 	if ((int)(hue * 6) % 2)
 		return ((t_color){.r = color.g, .g = color.r, .b = color.b});
@@ -38,20 +34,20 @@ static t_color	ft_color_from_hsv__swap(t_color color, float hue)
 }
 
 static t_color	ft_color_from_hsv__color(
-	float hue, float saturation, float value)
+	t_f32 hue, t_f32 saturation, t_f32 value)
 {
-	float	chroma;
+	t_f32	chroma;
 
 	chroma = value * saturation;
 	return ((t_color){
 		.r = (t_u8)(value * 255),
 		.g = (t_u8)(255 * (
-			value + chroma * -fabsf(ft_math_float_mod(hue * 6, 2.f) - 1))),
+			value + chroma * -fabsf(ft_f32_mod(hue * 6, 2.f) - 1))),
 		.b = (t_u8)(value - chroma)
 	});
 }
 
-t_color	ft_color_from_float_hsv(float hue, float saturation, float value)
+t_color	ft_color_from_f32_hsv(t_f32 hue, t_f32 saturation, t_f32 value)
 {
 	t_color	color;
 
