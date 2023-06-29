@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 14:06:39 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/29 09:22:06 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	ft_image_alloc(t_image *image, t_u32 width, t_u32 height)
 	image->width = width;
 	image->height = height;
 	image->pixels = (t_color *) mlx_get_data_addr(image->mlx_image,
-			&(int){0}, &(int){0}, &(int){0});
+			&(int){0}, (int *)&image->line_length, &(int){0});
 	return (true);
 }
 
@@ -52,7 +52,7 @@ bool	ft_image_alloc_from_xpm(t_image *image, char *filename)
 
 t_color	*ft_image_get_pixel(t_image *image, t_u32 x, t_u32 y)
 {
-	return (image->pixels + x + y * image->width);
+	return (image->pixels + x + y * image->line_length / sizeof(t_color));
 }
 
 void	ft_image_free(t_image *image)

@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 05:52:38 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 14:06:48 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/29 09:17:41 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_image
 	t_u32	height;
 	void	*mlx_image;
 	t_color	*pixels;
+	t_u32	line_length;
 }	t_image;
 
 // image.c
