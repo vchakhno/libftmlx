@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 03:59:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 17:08:50 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/26 06:46:01 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_color	ft_color_from_hsv__color(
 		.r = (t_u8)(value * 255),
 		.g = (t_u8)(255 * (
 			value + chroma * -fabsf(ft_f32_mod(hue * 6, 2.f) - 1))),
-		.b = (t_u8)(value - chroma)
+		.b = (t_u8)((value - chroma) * 255)
 	});
 }
 

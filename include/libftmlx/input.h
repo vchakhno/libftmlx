@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:40:15 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 15:52:10 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/06/29 01:14:06 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 typedef enum e_button_id {
 	FT_MOUSE_LEFT = 0,
 	FT_MOUSE_MIDDLE = 2,
-	FT_MOUSE_RIGHT = 1
+	FT_MOUSE_RIGHT = 1,
+	FT_SCROLL_UP = 4,
+	FT_SCROLL_DOWN = 5
 }	t_button_id;
 
 typedef struct s_mouse
