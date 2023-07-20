@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:48:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 15:50:51 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:39:46 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ bool	ft_window_open(t_window *window)
 	ft_mouse_init(&window->input.mouse);
 	window->open = true;
 	ft_window_handlers_setup(window);
+	ft_window_render_backbuffer(window);
 	mlx_loop(window->mlx_context);
 	return (true);
 }
@@ -61,7 +62,8 @@ void	ft_window_free(t_window *window)
 
 void	ft_window_render_backbuffer(t_window *window)
 {
-	mlx_put_image_to_window(
-		window->mlx_context, window->mlx_window,
-		window->back_buffer.mlx_image, 0, 0);
+	if (window->open)
+		mlx_put_image_to_window(
+			window->mlx_context, window->mlx_window,
+			window->back_buffer.mlx_image, 0, 0);
 }
