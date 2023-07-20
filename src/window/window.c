@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:48:19 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/20 17:39:46 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/21 01:30:16 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ bool	ft_window_alloc(
 	window->mlx_context = mlx_init();
 	if (!window->mlx_context)
 		return (false);
+	mlx_do_key_autorepeatoff(window->mlx_context);
 	if (!ft_image_alloc(&window->back_buffer, width, height))
 	{
 		mlx_destroy_display(window->mlx_context);
