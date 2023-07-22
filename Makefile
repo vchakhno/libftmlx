@@ -44,7 +44,7 @@ DEPS		:= $(OBJS:.o=.d)
 # **************************************************************************** #
 
 CC			:= cc
-CFLAGS		:= -Wall -Wextra -Werror -g
+CFLAGS		:= -Wall -Wextra -Werror -g -gdwarf-4
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
 AR			= ar -rcs
 

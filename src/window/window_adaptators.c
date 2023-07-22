@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:55:56 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 15:48:56 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/21 02:08:35 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	ft_mouse_release_adaptator(int button, int x, int y, t_window *window)
 {
 	(void) x;
 	(void) y;
-	window->input.mouse.buttons[button - 1] = false;
+	if (button <= 3)
+		window->input.mouse.buttons[button - 1] = false;
 	if (window->handlers.mouse_button_release_handler)
 		window->handlers.mouse_button_release_handler(window,
 			button, window->handlers.mouse_button_handlers_data);

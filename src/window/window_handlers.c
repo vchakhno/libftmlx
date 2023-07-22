@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:55:56 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 15:49:58 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:06:11 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ int	ft_window_cross_handler(t_window *window)
 int	ft_window_loop_adaptator(t_window *window)
 {
 	if (!window->open)
-	{
-		mlx_destroy_window(window->mlx_context, window->mlx_window);
-		mlx_loop_end(window->mlx_context);
 		return (0);
-	}
 	if (window->handlers.loop_handler)
 		window->handlers.loop_handler(
 			window, window->handlers.loop_handler_data);
