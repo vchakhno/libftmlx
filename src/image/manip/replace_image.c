@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 03:43:43 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 08:47:39 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:10:39 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_image_replace_image__unchecked(
 	t_u32	src_j;
 
 	dst_i = 0;
-	while (dst_i < (t_u32) dst_rect.h)
+	while ((t_i32) dst_i < dst_rect.h)
 	{
 		src_i = (double) dst_i / dst_rect.h
 			* src_rect.h + src_rect.y;
 		dst_j = 0;
-		while (dst_j < (t_u32) dst_rect.w)
+		while ((t_i32) dst_j < dst_rect.w)
 		{
 			src_j = (double) dst_j / dst_rect.w
 				* src_rect.w + src_rect.x;
