@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 08:18:45 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/25 09:02:15 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 # include "libftmlx/image.h"
 # include "libftmlx/math.h"
 # include "libftmlx/color.h"
+# include "libftmlx/font.h"
 
 #endif

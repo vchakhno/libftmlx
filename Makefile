@@ -8,16 +8,18 @@ NAME		:= libftmlx.a
 # 	SOURCES																	   #
 # **************************************************************************** #
 
-include src/math/Makefile
-include src/input/Makefile
+include src/font/Makefile
 include src/image/Makefile
+include src/input/Makefile
+include src/math/Makefile
 include src/window/Makefile
 
 SRC_DIR		:= src
 SRCS		:= \
-	$(addprefix math/,$(MATH_SRCS)) \
-	$(addprefix input/,$(INPUT_SRCS)) \
+	$(addprefix font/,$(FONT_SRCS)) \
 	$(addprefix image/,$(IMAGE_SRCS)) \
+	$(addprefix input/,$(INPUT_SRCS)) \
+	$(addprefix math/,$(MATH_SRCS)) \
 	$(addprefix window/,$(WINDOW_SRCS)) \
 	color_blending.c \
 	color_hsv.c
