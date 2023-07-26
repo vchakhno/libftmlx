@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_geometry.c                                      :+:      :+:    :+:   */
+/*   geometry.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:07:48 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:54:54 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 04:05:38 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	ft_circle_contains(t_circle circle, t_point point)
 	);
 }
 
-bool	ft_rect_contains_point(t_rect rect, t_point point)
+bool	ft_rect_contains_point(t_drect rect, t_point point)
 {
 	return (
 		(rect.x <= point.x) && (point.x <= rect.x + rect.w)

@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:54:50 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 08:52:44 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 04:06:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ typedef struct s_line
 	t_point	start;
 	t_point	end;
 }	t_line;
-
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int	w;
-	int	h;
-}	t_rect;
 
 typedef struct s_triangle
 {
@@ -68,7 +60,7 @@ typedef struct s_drange
 }	t_drange;
 
 bool		ft_circle_contains(t_circle circle, t_point point);
-bool		ft_rect_contains_point(t_rect rect, t_point point);
+bool		ft_rect_contains_point(t_drect rect, t_point point);
 
 t_f64		ft_lerp(t_f64 value, t_drange from, t_drange to);
 

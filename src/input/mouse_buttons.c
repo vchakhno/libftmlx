@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mouse_buttons.c                                 :+:      :+:    :+:   */
+/*   mouse_buttons.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 06:09:51 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/23 05:55:09 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 04:05:16 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	ft_mouse_button_released(t_mouse *mouse, t_button_id button)
 	return (!mouse->buttons[button] && mouse->previous_buttons[button]);
 }
 
-bool	ft_mouse_zone_clicked(t_mouse *mouse, t_rect rect, t_button_id button)
+bool	ft_mouse_zone_clicked(t_mouse *mouse, t_drect rect, t_button_id button)
 {
 	return (
 		ft_mouse_button_released(mouse, button)

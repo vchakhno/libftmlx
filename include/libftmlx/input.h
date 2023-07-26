@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:40:15 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/06/29 01:14:06 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 04:06:10 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	ft_mouse_button_down(t_mouse *mouse, t_button_id button);
 bool	ft_mouse_button_pressed(t_mouse *mouse, t_button_id button);
 bool	ft_mouse_button_released(t_mouse *mouse, t_button_id button);
 bool	ft_mouse_zone_clicked(t_mouse *mouse,
-			t_rect rect, t_button_id button);
+			t_drect rect, t_button_id button);
 
 typedef struct s_input
 {

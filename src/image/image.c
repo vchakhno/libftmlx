@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/25 08:36:27 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 04:22:20 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ bool	ft_image_alloc_from_xpm(t_image *image, char *filename)
 	}
 	image->pixels = (t_color *) mlx_get_data_addr(image->mlx_image,
 			&(int){0}, (int *)&image->line_length, &(int){0});
-	ft_image_cover(image, (t_color){.a = 255});
 	return (true);
 }
 
