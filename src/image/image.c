@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:30 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/26 05:56:37 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 06:06:11 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ bool	ft_image_alloc_from_xpm(t_image *image, char *filename)
 
 bool	ft_sub_image_from(t_image *image, t_drect rect, t_image *out_image)
 {
-	if (rect.x < 0 || rect.x + rect.w >= image->width
-		|| rect.y < 0 || rect.y + rect.h >= image->height)
+	if (rect.x < 0 || rect.x + rect.w > image->width
+		|| rect.y < 0 || rect.y + rect.h > image->height)
 		return (false);
 	*out_image = *image;
 	out_image->width = rect.w;
