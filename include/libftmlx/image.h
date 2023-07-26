@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 05:52:38 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/26 04:06:01 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/26 05:57:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_image
 // image.c
 bool			ft_image_alloc(t_image *image, t_u32 width, t_u32 height);
 bool			ft_image_alloc_from_xpm(t_image *image, char *filename);
+bool			ft_sub_image_from(
+					t_image *image, t_drect rect, t_image *out_image);
 t_color			*ft_image_get_pixel(t_image *image, t_u32 x, t_u32 y);
 void			ft_image_free(t_image *image);
 
