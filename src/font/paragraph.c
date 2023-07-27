@@ -6,14 +6,14 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 05:52:49 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/25 09:02:40 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:34:32 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftmlx/font.h"
 
 t_paragraph	ft_paragraph_from(
-	char *message, t_font font, t_u32 font_size, t_color color
+	t_str message, t_font font, t_u32 font_size, t_color color
 ) {
 	return ((t_paragraph){
 		.message = message,
@@ -57,12 +57,12 @@ void	ft_paragraph_render(
 	t_u32	i;
 
 	i = 0;
-	while (paragraph.message[i]
+	while (i < paragraph.message.len
 		&& point.x + i * paragraph.dst_letter_w < image->width)
 	{
 		ft_paragraph_render_letter(paragraph, image,
 			(t_point){.x = point.x + i * paragraph.dst_letter_w, .y = point.y},
-			paragraph.message[i]);
+			paragraph.message.c_str[i]);
 		i++;
 	}
 }

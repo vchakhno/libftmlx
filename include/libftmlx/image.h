@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 05:52:38 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/26 05:57:19 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:15:17 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,20 @@ void			ft_image_replace_image__unchecked(
 void			ft_image_clear(t_image *image, t_color color);
 void			ft_image_cover(t_image *image, t_color color);
 
+void			ft_image_fill_rect(
+					t_image *image, t_drect rect, t_color color);
+void			ft_image_fill_rect__unchecked(
+					t_image *image, t_drect rect, t_color color);
+void			ft_image_stroke_rect(
+					t_image *image, t_drect rect,
+					t_color color, t_f32 thickness);
+void			ft_image_stroke_rect__unchecked(
+					t_image *image, t_drect rect,
+					t_color color, t_f32 thickness);
+
 // TODO
 void			ft_image_draw_line(
 					t_image *image, t_line line, t_color color);
-void			ft_image_fill_rect(
-					t_image *image, t_drect rect, t_color color);
-void			ft_image_draw_rect(
-					t_image *image, t_drect rect, t_color color);
 void			ft_image_fill_triangle(
 					t_image *image, t_triangle triangle, t_color color);
 void			ft_image_draw_triangle(

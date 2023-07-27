@@ -6,3 +6,4 @@ IMAGE_SRCS = \
 	manip/cover.c \
 	manip/draw_pixel.c \
 	manip/replace_image.c \
+	drawing/rect.c \

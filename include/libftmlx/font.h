@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:55:42 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/25 09:02:36 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:34:19 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #  include <stdbool.h>
 #  include <libft/arithmetic/fixed_types.h>
+#  include <libft/data/str.h>
 #  include "libftmlx/color.h"
 #  include "libftmlx/image.h"
 
@@ -39,14 +40,14 @@ void		ft_font_free(t_font *font);
 
 typedef struct s_paragraph
 {
-	char	*message;
+	t_str	message;
 	t_font	font;
 	t_u32	dst_letter_w;
 	t_u32	dst_letter_h;
 	t_color	color;
 }	t_paragraph;
 
-t_paragraph	ft_paragraph_from(char *message, t_font font,
+t_paragraph	ft_paragraph_from(t_str message, t_font font,
 				t_u32 font_size, t_color color);
 void		ft_paragraph_render(t_paragraph paragraph, t_image *image,
 				t_point point);
