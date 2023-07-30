@@ -6,7 +6,7 @@
 /*   By: vchakhno <vchakhno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:40:15 by vchakhno          #+#    #+#             */
-/*   Updated: 2023/07/26 07:56:20 by vchakhno         ###   ########.fr       */
+/*   Updated: 2023/07/30 02:52:59 by vchakhno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef enum e_button_id {
 	FT_MOUSE_LEFT = 1,
-	FT_MOUSE_MIDDLE = 3,
-	FT_MOUSE_RIGHT = 2,
+	FT_MOUSE_MIDDLE = 2,
+	FT_MOUSE_RIGHT = 3,
 	FT_SCROLL_UP = 4,
 	FT_SCROLL_DOWN = 5
 }	t_button_id;
